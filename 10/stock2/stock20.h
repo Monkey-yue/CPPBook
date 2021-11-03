@@ -4,8 +4,8 @@
 
 class Stock
 {
-    pribate:
-        std::string sompany;
+    private:
+        std::string company;
         int shares;
         double share_val;
         double total_val;
