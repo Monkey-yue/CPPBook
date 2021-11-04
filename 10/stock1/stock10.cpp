@@ -1,7 +1,7 @@
 #include <iostream>
 #include "stock10.h"
 
-Stock::Stock()
+Stock::Stock()  // 默认构造函数
 {
     std::cout << "Default constructor called\n";
     company = "no name";
