@@ -66,6 +66,32 @@ namespace VECTOR
         }
     }
 
+    void Vector::reset(double n1, double n2, Mode form)
+    {
+        mode = form;
+        if (form == RECT)
+        {
+            x = n1;
+            y = n2;
+            set_mag();
+            set_ang();
+        }
+        else if (form == POL)
+        {
+            mag = n1;
+            ang = n2 / Rad_to_deg;
+            set_x();
+            set_y();
+        }
+        else
+        {
+            cout << "Incorrect 3rd argument to Vector() -- ";
+            cout << "vector set to 0\n";
+            x = y = mag = ang = 0.0;
+            mode = RECT;
+        }
+    }
+
     Vector::~Vector()
     {}
 
@@ -81,12 +107,12 @@ namespace VECTOR
 
     Vector Vector::operator+(const Vector & b) const
     {
-        return Vector(x + b.x, y + b,y);
+        return Vector(x + b.x, y + b.y);
     }
 
     Vector Vector::operator-(const Vector & b) const    // 两极坐标相减
     {
-        return Vector(x - b.x, y - b,y);
+        return Vector(x - b.x, y - b.y);
     }
 
     Vector Vector::operator-() const    // 转化为负数，此时-为一元运算符
